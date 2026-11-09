@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f8fc">
+    <meta name="description" content="A simple, beautiful weather forecast for your location.">
+    <title>Weather — your day, in view</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Weather home">
+          <span class="brand-mark" aria-hidden="true">☀</span>
+          <span>weather<span class="brand-period">.</span></span>
+        </a>
+        <div class="topbar-right">
+          <span class="live-indicator"><span aria-hidden="true"></span> Live forecast</span>
+          <button class="unit-toggle" id="unit-toggle" type="button" aria-label="Switch to Fahrenheit">°C <span aria-hidden="true">/</span> °F</button>
+        </div>
+      </header>
+
+      <section class="search-panel" aria-label="Find a location">
+        <form class="search-form" id="search-form">
+          <label class="sr-only" for="location-input">Search city or location</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="location-input" name="location" type="search" placeholder="Search a city or state..." autocomplete="off" spellcheck="false">
+          <button class="search-button" type="submit">Search</button>
+        </form>
+        <label class="sr-only" for="nigeria-state">Choose a state in Nigeria</label>
+        <select class="nigeria-state" id="nigeria-state">
+          <option value="">Nigeria: choose a state</option>
+        </select>
+        <button class="location-button" id="location-button" type="button">
+          <span aria-hidden="true">◎</span> Use my location
+        </button>
+        <div class="search-results" id="search-results" role="listbox" aria-label="Location suggestions" hidden></div>
+      </section>
+
+      <div class="status-message" id="status-message" role="status" aria-live="polite">
+        <span class="status-icon" aria-hidden="true">✦</span>
+        <span>Search for a city or use your location to see the forecast.</span>
+      </div>
+
+      <section class="weather-content" id="weather-content" aria-live="polite" hidden>
+        <div class="location-heading">
+          <div>
+            <p class="eyebrow" id="current-date"></p>
+            <h1 id="location-name"></h1>
+          </div>
+          <p class="timezone-label" id="timezone-label"></p>
+        </div>
+
+        <section class="current-card" aria-label="Current weather">
+          <div class="current-main">
+            <div class="current-condition">
+              <span class="weather-icon current-icon" id="current-icon" aria-hidden="true"></span>
+              <div>
+                <p class="condition-label" id="current-condition"></p>
+                <p class="feels-like" id="feels-like"></p>
+              </div>
+            </div>
+            <div class="temperature-wrap">
+              <span class="temperature" id="current-temperature"></span>
+              <span class="temperature-unit" id="current-unit">°C</span>
+            </div>
+          </div>
+          <div class="weather-details">
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">💧</span>
+              <div><span class="detail-label">Humidity</span><strong id="humidity"></strong></div>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">🌬</span>
+              <div><span class="detail-label">Wind</span><strong id="wind"></strong></div>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">☂</span>
+              <div><span class="detail-label">Precipitation</span><strong id="precipitation"></strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="forecast-section" aria-labelledby="forecast-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Plan ahead</p>
+              <h2 id="forecast-title">7-day forecast</h2>
+            </div>
+            <span class="forecast-caption">A little look at what’s ahead</span>
+          </div>
+          <div class="forecast-grid" id="forecast-grid"></div>
+        </section>
+
+        <footer class="attribution">
+          Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
